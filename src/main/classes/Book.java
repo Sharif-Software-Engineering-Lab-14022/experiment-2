@@ -15,6 +15,10 @@ public class Book {
         return title;
     }
 
+    public int getBid() {
+        return id;
+    }
+
     public String getAuthor() {
         return author;
     }
