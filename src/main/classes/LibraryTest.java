@@ -20,6 +20,70 @@ public class LibraryTest {
         student1 = new Student("Student 1", 1001);
         student2 = new Student("Student 2", 1002);
     }
+
+    @Test
+    public void testAddBook() {
+        library.addBook(book1);
+        assertTrue(library.searchBooks(SearchByType.TITLE, new ArrayList<>(List.of("Book 1"))).contains(book1));
+    }
+
+    @Test
+    public void testAddStudent() {
+        library.addStudent(student1);
+        assertTrue(library.searchStudents(SearchByType.NAME, new ArrayList<>(List.of("Student 1"))).contains(student1));
+    }
+
+    @Test
+    public void testLendBookSuccess() {
+        library.addBook(book1);
+        library.addStudent(student1);
+        assertTrue(library.lendBook(book1, student1));
+        assertTrue(student1.hasBook(book1));
+        assertNull(library.searchBooks(SearchByType.TITLE, new ArrayList<>(List.of("Book 1"))));
+    }
+
+    @Test
+    public void testLendBookFailureBookNotRegistered() {
+        library.addStudent(student1);
+        assertFalse(library.lendBook(book1, student1));
+    }
+
+    @Test
+    public void testLendBookFailureStudentNotRegistered() {
+        library.addBook(book1);
+        assertFalse(library.lendBook(book1, student1));
+    }
+
+    @Test
+    public void testLendBookFailureStudentAlreadyHasBook() {
+        library.addBook(book1);
+        library.addStudent(student1);
+        library.lendBook(book1, student1);
+        assertFalse(library.lendBook(book1, student1));
+    }
+
+    @Test
+    public void testReturnBookSuccess() {
+        library.addBook(book1);
+        library.addStudent(student1);
+        library.lendBook(book1, student1);
+        assertTrue(library.returnBook(book1, student1));
+        assertTrue(library.searchBooks(SearchByType.TITLE, new ArrayList<>(List.of("Book 1"))).contains(book1));
+        assertFalse(student1.hasBook(book1));
+    }
+
+    @Test
+    public void testReturnBookFailureStudentNotRegistered() {
+        assertFalse(library.returnBook(book1, student1));
+    }
+
+    @Test
+    public void testReturnBookFailureStudentDoesntHaveBook() {
+        library.addBook(book1);
+        library.addStudent(student1);
+        assertFalse(library.returnBook(book1, student1));
+    }
+
     @Test
     public void testSearchStudentsById() {
         library.addStudent(student1);
