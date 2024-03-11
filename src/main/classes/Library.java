@@ -32,6 +32,10 @@ public class Library {
             System.out.println("!! Book " + book.getTitle() + " not registered.");
             return false;
         }
+        if (!this.students.contains(student)) {
+            System.out.println("!! Student " + student.getName() + " not registered.");
+            return false;
+        }
         if (student.hasBook(book)) {
             System.out.println("!! Student already has the book.");
             return false;
@@ -57,6 +61,7 @@ public class Library {
             return false;
         }
         if (student.hasBook(book)) {
+            student.removeBook(book);
             this.books.add(book);
             System.out.println(student.getName() + " returned " + book.getTitle() + ".");
             return true;
