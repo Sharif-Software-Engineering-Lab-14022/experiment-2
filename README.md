@@ -11,3 +11,23 @@ It's the second experiment of Software Engineering Lab course in Spring 2024 at 
 ### پیدا کردن دو ایراد کد با  استفاده از TDD
 برای هر تابع در کلاس Library به ترتیب تست‌ها را نوشتیم. هر‌جا لازم بود نیز یک تست برای موفق بودن و یک تست برای ناموفق بودن تابع نوشتیم. همه شرایط گفته شده در کامنت‌ها را نیز در نوشتن تست‌ها در نظر گرفتیم. در نهایت تست‌های testLendBookFailureStudentNotRegistered و testReturnBookSuccess ناموفق بودند. testLendBookFailureStudentNotRegistered به این دلیل که هنگام امانت گرفتن کتاب بررسی نمیکند که دانش‌آموز در کتابخانه عضو است یا خیر؛ testReturnBookSuccess به این دلیل که بعد از برگرداندن کتاب آن را از لیست کتاب‌های دانش‌آموز حذف نمیکند. در آخر این مشکلات تست‌ها را resolve کردیم که در کامیت‌ها قابل مشاهده است.
 
+## Questions
+### 1
+#### روش TDD را با روش تست کردن سنتی که در آن بعد از نوشتن برنامه، تست‌ها نوشته می‌شوند، از نظر نوع پروژه‌هایی که هر یک برای آن‌ها مناسب هست، مقایسه کنید.
+روش TDD برای پروژه‌های زیر مناسب است:
+- پروژه‌ای که نیازمندی‌های آن مشخص و شفاف است. پروژه‌ای که چنین ویژگی‌ای دارد، TDD برای آن یک رویکرد طبیعی برای ادامه‌ی کار است.
+- وقتی که deadline تحت فشار و نزدیک نداریم. وفتی که ددلاین تحت فشار داریم و نیاز به time to market کمی داریم، شاید تکرار مراحل TDD وقت‌گیر باشد و انتخاب مناسبی نباشد.
+- وقتی که در حال توسعه‌ی یک feature جدید هستیم. بهترین راه برای استفاده از TDD در این شرایط، تعریف دقیق نیازمندی‌های feature جدید است.
+- وقتی که به روی پروژه‌های به اصطلاح greenfield کار می‌کنیم. در پروژه‌های greenfield همانند prototypes یا MVPها، انجام TDD یک راهی است که باعث می‌شود ما اطمینان حاصل کنیم که برنامه‌ی نهایی تا حد خوبی بدون bug کار می‌کند و همچنین clean و modular است.
+- س
+
+روش سنتی برای پروژه‌های زیر مناسب است:
+- پروژه‌هایی که در کوتاه مدت می‌خواهند نتیجه بگیرند. چون اثرات خوب TDD در بلند مدت نمایان می‌شود و در پروژه‌های با deadlineهای فشرده استفاده از TDD منطقی نیست.
+- اگر rate ورود افراد به پروژه زیاد است، ممکن است TDD خوب نباشد و روش سنتی بهتر باشد. چون learning curve برای TDD بیش‌تر است و همچنین احتمالاً افراد کم‌تری با این روش آشنا هستند، پس ممکن است اجرای TDD زمان بیش‌تری از تیم بگیرد.
+- اگر تغییرات زیاد باشد، ممکن است روش سنتی بهتر باشد. در TDD مهندسان بر اساس نیازمندی‌ها تست‌ها را می‌نویسند. اگر تغییری در نیازمندی‌ها رخ دهد، منجر به تغییر در تست‌ها می‌شود. پس مهندسان باید بر اساس نیازمندی‌های جدید تست‌ها را بازنویسی کنند و developerها کد جدید برای پاس کردن تست‌ها بنویسند.
+- برای پروژه‌هایی که تست برای UI دارند، شاید روش سنتی بهتر باشد چون هم ممکن است تغییرات UI زیاد باشد یا اینکه UI پیچیده باشد.
+- برای video game development.
+
+بعضی از [دوستان](https://www.quora.com/In-what-kind-of-project-is-it-best-to-use-test-driven-development-And-how-much-time-can-it-save-you) هم انگار اعتقاد دارند که برای هر پروژه‌ای TDD بهتر است که خب البته من به آن زیاد اعتقادی ندارم. :)
+
+[منبع ۱](https://www.nan-labs.com/blog/test-driven-development-examples-framework)، [منبع ۲](https://pandaquests.medium.com/projects-not-suitable-for-tdd-test-driven-development-dd7d71e8fe6c)، [منبع ۳](https://www.quora.com/Are-there-any-scenarios-where-TDD-doesn-t-make-sense-for-a-project-as-a-software-engineer)، [منبع ۴](https://softwareengineering.stackexchange.com/questions/41773/does-tdd-really-work-for-complex-projects)، [منبع ۵](https://stackoverflow.com/questions/2314909/is-tdd-overkill-for-small-projects)
