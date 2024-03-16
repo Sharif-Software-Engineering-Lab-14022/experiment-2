@@ -14,12 +14,12 @@ It's the second experiment of Software Engineering Lab course in Spring 2024 at 
 ## Questions
 ### 1
 #### روش TDD را با روش تست کردن سنتی که در آن بعد از نوشتن برنامه، تست‌ها نوشته می‌شوند، از نظر نوع پروژه‌هایی که هر یک برای آن‌ها مناسب هست، مقایسه کنید.
+
 روش TDD برای پروژه‌های زیر مناسب است:
 - پروژه‌ای که نیازمندی‌های آن مشخص و شفاف است. پروژه‌ای که چنین ویژگی‌ای دارد، TDD برای آن یک رویکرد طبیعی برای ادامه‌ی کار است.
 - وقتی که deadline تحت فشار و نزدیک نداریم. وفتی که ددلاین تحت فشار داریم و نیاز به time to market کمی داریم، شاید تکرار مراحل TDD وقت‌گیر باشد و انتخاب مناسبی نباشد.
 - وقتی که در حال توسعه‌ی یک feature جدید هستیم. بهترین راه برای استفاده از TDD در این شرایط، تعریف دقیق نیازمندی‌های feature جدید است.
-- وقتی که به روی پروژه‌های به اصطلاح greenfield کار می‌کنیم. در پروژه‌های greenfield همانند prototypes یا MVPها، انجام TDD یک راهی است که باعث می‌شود ما اطمینان حاصل کنیم که برنامه‌ی نهایی تا حد خوبی بدون bug کار می‌کند و همچنین clean و modular است.
-- س
+- وقتی که به روی پروژه‌های به اصطلاح greenfield کار می‌کنیم. در پروژه‌های greenfield همانند prototypeها یا MVPها، انجام TDD یک راهی است که باعث می‌شود ما اطمینان حاصل کنیم که برنامه‌ی نهایی تا حد خوبی بدون bug کار می‌کند و همچنین clean و modular است.
 
 روش سنتی برای پروژه‌های زیر مناسب است:
 - پروژه‌هایی که در کوتاه مدت می‌خواهند نتیجه بگیرند. چون اثرات خوب TDD در بلند مدت نمایان می‌شود و در پروژه‌های با deadlineهای فشرده استفاده از TDD منطقی نیست.
@@ -31,3 +31,26 @@ It's the second experiment of Software Engineering Lab course in Spring 2024 at 
 بعضی از [دوستان](https://www.quora.com/In-what-kind-of-project-is-it-best-to-use-test-driven-development-And-how-much-time-can-it-save-you) هم انگار اعتقاد دارند که برای هر پروژه‌ای TDD بهتر است که خب البته من به آن زیاد اعتقادی ندارم. :)
 
 [منبع ۱](https://www.nan-labs.com/blog/test-driven-development-examples-framework)، [منبع ۲](https://pandaquests.medium.com/projects-not-suitable-for-tdd-test-driven-development-dd7d71e8fe6c)، [منبع ۳](https://www.quora.com/Are-there-any-scenarios-where-TDD-doesn-t-make-sense-for-a-project-as-a-software-engineer)، [منبع ۴](https://softwareengineering.stackexchange.com/questions/41773/does-tdd-really-work-for-complex-projects)، [منبع ۵](https://stackoverflow.com/questions/2314909/is-tdd-overkill-for-small-projects)
+
+---
+### 2
+#### در فرایند ایجاد نرم‌افزار هم تیم ایجاد (Development Team) و هم تیم تضمین کیفیت (QA Team) وظیفه تست نرم‌افزار را برعهده دارند. هر کدام از این تیم‌ها بیش‌تر با کدام دسته از انواع تست سروکار دارد؟ چرا؟ انواع تست ذکر شده را به طور مختصر شرح دهید.
+
+تیم ایجاد:
+- تست unit: در این نوع تست که white box انجام می‌شود، یک unit خاص از کد، برای مثال یک تابع چک می‌شود.
+- تست integration:‌ در این نوع تست، تیم ایجاد مطمئن می‌شود که تمام بخش‌های کد (moduleها و توابع) در تعامل با یکدیگر درست کار می‌کنند.
+- تست regression: تیم ایجاد بیش‌تر این تست را در context کدی که تغییر داده انجام می‌دهد. آن‌ها قصد دارند تا متوجه شوند که کدی که زده‌اند باعث side effectی در functionality موجود نشده است. هدف این نوع تست نیز همین است که مطمئن شود در اثر تغییرات نرم‌افزار کارکردش دچار اختلال نشده است.
+- تست performance به صورت basic: این تست در تیم ایجاد به صورت ساده پیاده‌سازی می‌شود تا این تیم از سرعت، responsiveness و scalability کد خود تا حدی مطمئن شود و داده به دست بیاورد.
+
+تیم تضمین کیفیت:
+- تست integration:‌ هدف این تست در تیم تضمین کیفیت همانند تیم ایجاد است ولی با این تفاوت که این تیم تست‌ها را در ابعاد گسترده‌تری اجرا می‌کنند تا از کارکرد همه‌ی بخش‌های کد (حتی بخش‌هایی که قبلاً زده شده‌اند) مطمئن شوند.
+- تست regression: این تست در تیم تضمین کیفیت به روی کل سیستم انجام می‌شود تا از کارکرد کل سیستم در کنار کدها و featureهای جدید مطمئن شود.
+- تست functional: این تست انجام می‌شود تا مطمئن شویم که سیستم نیازمندی‌های مشخص شده را پاسخ می‌دهد.
+- تست user acceptance: تیم QA شامل end userها و stakeholderها هستند تا validate کنند که سیستم نیازمندی‌های مشخص شده را پاسخ می‌دهد.
+- تست preformance:‌ این تیم به صورت گسترده‌تر همان تست‌های performance را انجام می‌دهد.
+- تست security: هدف از این نوع تست تشخیص آسیب‌پذیری‌های امنیتی موجود در سیستم است.
+- تست usability: تیم QA این تست را به روی UX و UI سیستم انجام می‌دهد تا مطمئن شود که این موارد easy to use و user friendly هستند.
+
+به طور کلی هدف از تست‌هایی که در تیم ایجاد انجام می‌شود آن است که از کارکرد سیستم در بخشی که خودشان اضافه کرده‌اند مطمئن شوند. به طور کلی تست‌های این تیم localتر هستند. در طرف مقابل تست‌هایی که توسط تیم تضمین کیفیت انجام می‌شود به روی کل سیستم است و هدف آن تضمین کارکرد کل سیستم است. تست‌های تیم ایجاد معمولاً white box و تست‌های تیم تضمین کیفیت معمولاً black box است.
+
+[منبع ۱](https://synoptek.com/insights/it-blogs/dev-testing-and-qa-testing-whats-the-difference)، [منبع ۲](https://www.browserstack.com/guide/qa-testing-vs-dev-testing)، [منبع ۳](https://katalon.com/resources-center/blog/different-types-of-qa-testing)، [منبع ۴](https://chat.openai.com/share/9a210ce0-468e-4bc9-bad8-044254d63e00)
